@@ -49,18 +49,32 @@ lines(dates,presents)
 #
 hun = seq(from=1, to=100)
 ss = c()
-for(i in hun) {
-  if(ss[i] < 5 & ss[i] > 90)
-  {ss[i]= hun[i]*10
+
+for(i in 1:length(hun)) 
+  {
+  if(hun[i] < 5) {
+    ss[i] <- (hun[i] *10)
+}else if (hun[i] > 90){
+  ss[i] <- (hun[i] *10)
   }else{
-    ss[i] = hun[i]*0.1
+    ss[i] = (hun[i]*0.1)
   }
-  
 }
- 
 ss;
 
-xx <- seq(from=1,to=100)
+fun1 = function(arg1)
+{
+ss1=c()
+for(i in 1:length(arg1)) 
+{
+  if(arg1[i] < 5) {
+    ss1[i] <- (arg1[i] *10)
+  }else if (hun[i] > 90){
+    ss1[i] <- (arg1[i] *10)
+  }else{
+    ss1[i] = (arg1[i]*0.1)
+  }
+}
+ss1
+}
 
-xx[xx>90 | xx<5]*10
-xx[6:89]*0.1
