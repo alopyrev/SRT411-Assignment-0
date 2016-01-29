@@ -1,0 +1,181 @@
+---
+title: "Assignment_0"
+author: "Alexander Lopyrev"
+date: "January 29, 2016"
+output: html_document
+---
+
+
+In this assignment I am starting to practice R language.
+
+I will do a few exercises to get a hang of it.
+
+Github username: alopyrev
+
+Link to the exercise source:
+
+https://cran.r-project.org/doc/contrib/Torfs+Brauer-Short-R-Intro.pdf
+
+#3. Some first exapmles of R
+
+
+3.1 Calculator
+```{r}
+(2016-2014)/(2016-1992)*100
+```
+
+3.2 Workspace
+
+```{r}
+a = 2016
+
+b = 2014
+
+c = 1992
+
+(a-b)/(a-c)*100
+```
+
+3.4 Functions
+
+```{r}
+sum(c(4,5,8,11))
+```
+
+3.5 Plots
+
+```{r}
+x = rnorm(100)
+
+plot(x);
+```
+
+
+#4 HELP
+
+```{r}
+?sqrt
+```
+
+#5 Scripts
+Made a file call "scripts_to_do.R"
+```{r}
+source("/home/alex/Desktop/Short_Intro_to_R/#5_Scripts_To_do.R")
+```
+
+
+#6 Vectors
+
+6.2 Matrix+Vector
+
+```{r}
+P = seq(31,60)
+
+Q = matrix(P, ncol=5, nrow=6 )
+
+Q
+```
+
+6.3 Data Frames
+
+```{r}
+x1= rnorm(100)
+x2= rnorm(100)
+x3= rnorm(100)
+
+
+t= data.frame(a= x1, b = (x1+x2),c = (x1+x2+x3))
+
+t
+
+plot(t)
+
+sd(t$a)
+sd(t$b)
+sd(t$c)
+```
+
+
+#7 Graphics
+```{r}
+plot(t$a, type="l", ylim=range(t),
+     lwd=3, col=rgb(1,0,0,0.3))
+lines(t$b, type="s", lwd=2,
+      col=rgb(0.3,0.4,0.3,0.9))
+points(t$c, pch=20, cex=4, col=rgb(0,0,1,0.3))
+```
+
+
+The meaning of RGB is Red, Blue and Green. It determines the color of the markings on the graph.
+
+#8 reading and writing from file
+```{r}
+r2 = read.table(file="tst1.txt", header=TRUE)
+m= r2$g*5
+
+write.table(m, file="tst2.txt")
+
+```
+
+9. Not available Data. Compute the mean of the sqrt of 100 random numbers
+
+```{r}
+sqrt(rnorm(100))
+```
+
+What happens? we get NaNs produced, NaN = not a number.
+
+
+
+10.1 Make a graph with dates on X-Axis and presents on Y-Axis
+```{r}
+dates= strptime(c("20160127", "20160904","20161224"),format="%Y%m%d")
+presents = c(0,7,5)
+
+plot(dates,presents)
+lines(dates,presents)
+```
+
+In the ToDo below I will make a vector from 1 to 100. Which will have a for-loop which runs through the wole vector. Elements that are smaller than 5 and larger than 90 will be mupltiplied by 10 and the other elements will be muliplied by 0.1
+
+```{r}
+hun = seq(from=1, to=100)
+ss = c()
+
+for(i in 1:length(hun)) 
+{
+  if(hun[i] < 5) {
+    ss[i] <- (hun[i] *10)
+  }else if (hun[i] > 90){
+    ss[i] <- (hun[i] *10)
+  }else{
+    ss[i] = (hun[i]*0.1)
+  }
+}
+ss;
+
+```
+
+This funciton is very similar to the for-loop above except you can provide your own argument for vector.
+
+```{r}
+
+fun1 = function(arg1)
+{
+  ss1=c()
+  for(i in 1:length(arg1)) 
+  {
+    if(arg1[i] < 5) {
+      ss1[i] <- (arg1[i] *10)
+    }else if (hun[i] > 90){
+      ss1[i] <- (arg1[i] *10)
+    }else{
+      ss1[i] = (arg1[i]*0.1)
+    }
+  }
+  ss1
+}
+
+
+fun1(arg1=c(3:80))
+```

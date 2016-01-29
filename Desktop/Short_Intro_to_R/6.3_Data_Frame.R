@@ -46,7 +46,7 @@ presents = c(0,7,5)
 plot(dates,presents)
 lines(dates,presents)
 
-#
+
 hun = seq(from=1, to=100)
 ss = c()
 
@@ -78,3 +78,4 @@ for(i in 1:length(arg1))
 ss1
 }
 
+rn=c(1:100)
